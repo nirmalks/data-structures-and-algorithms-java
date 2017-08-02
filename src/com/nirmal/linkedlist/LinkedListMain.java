@@ -29,17 +29,23 @@ public class LinkedListMain {
     }
 
     public boolean isEmpty() {
-        if(this.head == null) {
+        if(this.getSize() == 0) {
             return true;
         } else {
             return false;
         }
     }
 
-    public int front() {
+    public Object front() {
         LinkedListNode firstNode = this.head;
-        int data = firstNode.item;
+        Object data = firstNode.item;
         return data;
+    }
+
+    public void push_front(int value) {
+        LinkedListNode newNode = new LinkedListNode(value);
+        newNode.next = head;
+        this.head = newNode;
     }
 
     public static void main(String[] args) {
@@ -54,5 +60,8 @@ public class LinkedListMain {
         System.out.println("Size of the list " + list.size);
         System.out.println("Is the list empty " + list.isEmpty());
         System.out.println("value of first item " + list.front());
+        list.push_front(10);
+        System.out.println("value of first item " + list.front());
+        list.printList();
     }
 }

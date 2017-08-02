@@ -5,15 +5,15 @@ package com.nirmal.linkedlist;
  */
 public class LinkedListNode {
 
-    int item;
+    Object item;
     LinkedListNode next;
 
-    public LinkedListNode(int item , LinkedListNode next){
+    public LinkedListNode(Object item , LinkedListNode next){
         this.item = item;
         this.next = next;
     }
 
-    public LinkedListNode(int item) {
+    public LinkedListNode(Object item) {
         this(item, null);
     }
 }

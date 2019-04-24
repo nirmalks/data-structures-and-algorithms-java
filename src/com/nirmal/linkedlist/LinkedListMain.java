@@ -7,7 +7,12 @@ public class LinkedListMain {
     LinkedListNode head;
 
     public int getSize() {
-        return size;
+        LinkedListNode node = this.head;
+        while( node != null ) {
+            this.size++;
+            node = node.next;
+        }
+        return this.size;
     }
 
     private int size;
@@ -24,7 +29,7 @@ public class LinkedListMain {
         System.out.println("The contents of the list are ");
         while( node != null ) {
             System.out.println(node.item);
-            this.size++;
+//            this.size++;
             node = node.next;
         }
     }
@@ -70,7 +75,9 @@ public class LinkedListMain {
 
         Object lastItem = last.item;
         last = null;
-        prevNode.next = null;
+        if(prevNode != null) {
+            prevNode.next = null;
+        }
         return lastItem;
     }
 
@@ -103,17 +110,16 @@ public class LinkedListMain {
         LinkedListNode head = this.head;
         LinkedListNode newNode = new LinkedListNode(value);
         LinkedListNode lastNode = head;
-
         if(this.isEmpty()) {
-            head = newNode;
+            this.head = newNode;
             return;
         }
 
-
-            while( head.next != null) {
+        System.out.println("head " + head.next.item);
+            while(head.next != null) {
                 lastNode = head.next;
+                head = head.next;
             }
-            System.out.println(lastNode);
 
         lastNode.next = newNode;
 
@@ -121,9 +127,10 @@ public class LinkedListMain {
 
     public Object valueAt(int index) {
         LinkedListNode currentNode = this.head;
-        for(int i = 0 ; i < index; i++) {
+        index = index - 1;
+        for(int i = 0 ; i <= index; i++) {
             currentNode = currentNode.next;
-            if( i + 1 == index) {
+            if( i == index) {
                 return currentNode.item;
             }
         }
@@ -144,7 +151,7 @@ public class LinkedListMain {
     public void eraseNode(int index) {
         LinkedListNode currentNode = this.head;
         LinkedListNode prevNode = null;
-        for(int i = 0; i < this.getSize() ; i++) {
+        for(int i = 0; i < index ; i++) {
             prevNode = currentNode;
             if(currentNode.next != null) {
                 currentNode = currentNode.next;
@@ -157,6 +164,30 @@ public class LinkedListMain {
         }
     }
 
+    //Removes the first item in the list with this value
+    public void removeValue(int value) {
+        LinkedListNode newNode = new LinkedListNode(value);
+        LinkedListNode head = this.head;
+        newNode.next = head.next;
+        this.head = newNode;
+    }
+
+    //reverse the linked list
+    public void reverse() {
+        LinkedListNode prevNode = null;
+        LinkedListNode currentNode = this.head;
+        LinkedListNode nextNode = null;
+
+
+        while (currentNode != null)  {
+            nextNode = currentNode.next;
+        currentNode.next = prevNode;
+        prevNode = currentNode;
+        currentNode = nextNode;
+    }
+        this.head = prevNode;
+    }
+
     public static void main(String[] args) {
         LinkedListNode first = new LinkedListNode(1);
         LinkedListNode second = new LinkedListNode(2);
@@ -166,7 +197,7 @@ public class LinkedListMain {
         second.next = third;
 
         list.printList();
-        System.out.println("Size of the list " + list.size);
+        System.out.println("Size of the list " + list.getSize());
         System.out.println("Is the list empty " + list.isEmpty());
         System.out.println("value of first item " + list.front());
         list.pushFront(10);
@@ -179,13 +210,21 @@ public class LinkedListMain {
         list.popBack();
         list.printList();
         System.out.println("Value of the last item " + list.back());
+        list.printList();
         list.insert(1,100);
         list.printList();
-        System.out.println("Value of the item at index 2 " + list.valueAt(2));
+        System.out.println("Value of the item at index 2 " + list.valueAt(1));
         list.printList();
         System.out.println("Value of the item from back at index 2 " + list.getValueOfNthItemFromEnd(2));
         list.printList();
-        list.eraseNode(1);
+        list.eraseNode(2);
+        list.printList();
+        list.removeValue(200);
+        list.printList();
+        list.pushBack(20);
+        list.printList();
+
+        list.reverse();
         list.printList();
     }
 }

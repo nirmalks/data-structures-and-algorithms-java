@@ -1,4 +1,4 @@
-package queuearray;
+package com.nirmal.queuearray;
 
 /**
  * Created by nirmal on 29/8/17.
@@ -30,7 +30,6 @@ public class Queue {
         if(full()){
             return ;
         } else {
-            System.out.println(this.rear);
             this.rear = (this.rear + 1) % this.capacity;
             queueArray[this.rear] = value;
             System.out.print("rear value" + this.rear);

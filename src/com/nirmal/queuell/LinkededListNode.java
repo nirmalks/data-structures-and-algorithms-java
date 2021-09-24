@@ -1,4 +1,4 @@
-package queuell;
+package com.nirmal.queuell;
 
 public class LinkededListNode {
     Object data;

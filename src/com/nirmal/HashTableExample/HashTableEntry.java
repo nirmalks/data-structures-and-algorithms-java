@@ -1,4 +1,4 @@
-package HashTableExample;
+package com.nirmal.HashTableExample;
 
 /**
  * Created by nirmal on 14/1/18.

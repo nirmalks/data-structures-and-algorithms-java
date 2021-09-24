@@ -1,8 +1,11 @@
+package com.nirmal;
+
 public class BinarySearch {
+
     //recursive implementation
     public int binarySearchRecursive(int key, int arr[], int left, int right) {
         if(left <= right) {
-            int mid = (left + right) / 2;
+            int mid = left + (right - left) / 2;
             if (arr[mid] == key) {
                 return mid;
             } else if (arr[mid] > key) {
@@ -10,14 +13,13 @@ public class BinarySearch {
             } else {
                 return binarySearchRecursive(key, arr, mid + 1, right);
             }
-
         }
         return -1;
     }
 
     public int binarySearchIterative(int key, int arr[], int left, int right) {
         while(left <= right) {
-            int mid = (left + right) / 2;
+            int mid = left + (right - left) / 2;
             if (arr[mid] == key) {
                 return mid;
             } else if (arr[mid] > key) {

@@ -1,4 +1,4 @@
-package queuell;
+package com.nirmal.queuell;
 
 public class QueueLinkedList {
    LinkededListNode head , tail;

@@ -87,14 +87,10 @@ public class LinkedListMain {
         for(int i = 0 ; i < index; i++) {
             LinkedListNode prevNode = currentNode;
             currentNode = currentNode.next;
-            System.out.println(currentNode.item);
-            System.out.println(currentNode.next);
             if( i + 1 == index) {
                 newNode.next = currentNode.next;
-                System.out.println("last element");
                 currentNode = newNode;
                 prevNode.next = newNode;
-                System.out.println(currentNode.item);
                 return;
             }
         }
@@ -178,13 +174,12 @@ public class LinkedListMain {
         LinkedListNode currentNode = this.head;
         LinkedListNode nextNode = null;
 
-
-        while (currentNode != null)  {
+        while (currentNode != null) {
             nextNode = currentNode.next;
-        currentNode.next = prevNode;
-        prevNode = currentNode;
-        currentNode = nextNode;
-    }
+            currentNode.next = prevNode;
+            prevNode = currentNode;
+            currentNode = nextNode;
+        }
         this.head = prevNode;
     }
 
